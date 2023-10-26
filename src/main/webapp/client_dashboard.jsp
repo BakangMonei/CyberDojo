@@ -77,13 +77,13 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
                     <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
+                        More Content
+                    </button>
+
+                    <button type="button" href="more_content.jsp"
+                            class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        Messages
                     </button>
                 </div>
             </div>
@@ -296,11 +296,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form>
+            <form action="PaymentClientGateWayApiServlet" method="post">
                 <div class="modal-body">
+
                     <div class="my-3">
                         <div class="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked
+                                   required>
                             <label class="form-check-label" for="credit">Credit card</label>
                         </div>
                         <div class="form-check">
@@ -315,8 +317,20 @@
 
                     <div class="row gy-3">
                         <div class="col-md-6">
+                            <label for="email" class="form-label">Email Of Registered Client</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder=""
+                                   required>
+                            <small class="text-muted">Registered Email</small>
+                            <div class="invalid-feedback">
+                                Registered Email Is Required
+                            </div>
+                        </div>
+
+                    <div class="row gy-3">
+                        <div class="col-md-6">
                             <label for="cc-name" class="form-label">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" name="username" placeholder="" required>
+                            <input type="text" class="form-control" id="cc-name" name="username" placeholder=""
+                                   required>
                             <small class="text-muted">Full name as displayed on card</small>
                             <div class="invalid-feedback">
                                 Name on card is required
@@ -333,7 +347,7 @@
 
                         <div class="col-md-3">
                             <label for="cc-expiration" class="form-label">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <input type="text" class="form-control" id="cc-expiration" name="expiryDate" placeholder="" required>
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
@@ -341,7 +355,7 @@
 
                         <div class="col-md-3">
                             <label for="cc-cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <input type="text" class="form-control" id="cc-cvv" name="cvv" placeholder="" required>
                             <div class="invalid-feedback">
                                 Security code required
                             </div>
@@ -349,7 +363,6 @@
                     </div>
                 </div>
             </form>
-
 
 
             <div class="modal-footer">

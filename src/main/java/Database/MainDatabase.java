@@ -454,6 +454,34 @@ public class MainDatabase {
         databaseConnection.preparedStatement.executeUpdate();
     }
 
+    public void doPayment(int id, String payMethod, String email, String username, String cardN, String expiryDate, String cvv) throws SQLException{
+        PreparedStatement pst = null;
+        pst = databaseConnection.connection.prepareStatement("insert into dopayment values (?,?,?,?,?,?,?)");
+        pst.setInt(1, id);
+        pst.setString(2, payMethod);
+        pst.setString(3, email);
+        pst.setString(4, username);
+        pst.setString(5, cardN);
+        pst.setString(6, expiryDate);
+        pst.setString(7, cvv);
+
+        databaseConnection.preparedStatement = pst;
+        databaseConnection.preparedStatement.executeUpdate();
+    }
+    public int searchDoPaymentLastId() throws SQLException {
+        int result;
+        PreparedStatement pst = null;
+        pst = databaseConnection.connection.prepareStatement("select id from dopayment \n order by id desc \n limit 1");
+        ResultSet rsGetData = pst.executeQuery();
+
+        if (rsGetData.next()) {
+            result = rsGetData.getInt("id");
+        } else {
+            result = 0;
+        }
+        return result;
+    }
+
     public int searchPaymentLastId() throws SQLException {
         int result;
         PreparedStatement pst = null;
