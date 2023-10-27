@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
                 Cookie loginCk = new Cookie("email", email);
                 loginCk.setMaxAge(60*5);
                 response.addCookie(loginCk);
-                response.sendRedirect(request.getContextPath() + "/client_dashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/profile_dashboard.jsp");
             }
             else{
                 response.sendRedirect(request.getContextPath() + "/try.jsp");
