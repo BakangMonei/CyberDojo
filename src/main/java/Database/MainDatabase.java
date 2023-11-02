@@ -27,16 +27,15 @@ public class MainDatabase {
         pst.setString(1, email);
         pst.setString(2, password);
 
+
         ResultSet resultSet = pst.executeQuery();
         return resultSet;
     }
 
     // Adding Employee
-    public void registerEmployee(int id, String firstName,
-                                 String lastName, String email,
-                                 String password, int phone,
-                                 String address, String gender,
-                                 String username, String omang) throws SQLException {
+    public void registerEmployee(int id, String firstName, String lastName, String email, String password,
+                                 int phone, String address, String gender, String username, String omang)
+            throws SQLException {
         PreparedStatement pst = null;
         pst = databaseConnection.connection.prepareStatement("insert into employee values (?,?,?,?,?,?,?,?,?,?)");
         pst.setInt(1, id); //
@@ -435,9 +434,6 @@ public class MainDatabase {
         databaseConnection.preparedStatement.executeUpdate();
     }
 
-
-
-
     // Make payment to the database
     public void makePayment(int id, String email, String username, int cardN, int cvc, int expiryDate, int amount) throws SQLException {
         PreparedStatement pst = null;
@@ -453,7 +449,6 @@ public class MainDatabase {
         databaseConnection.preparedStatement = pst;
         databaseConnection.preparedStatement.executeUpdate();
     }
-
 
     public int searchDoPaymentLastId() throws SQLException {
         int result;
@@ -497,6 +492,8 @@ public class MainDatabase {
         databaseConnection.preparedStatement = pst;
         databaseConnection.preparedStatement.executeUpdate();
     }*/
+
+
     public void doPayment(int id, String payMethod, String email, String username, String cardN, String expiryDate, String cvv) throws SQLException {
         PreparedStatement pst = null;
         pst = databaseConnection.connection.prepareStatement("insert into payment values (?,?,?,?,?,?,?)");
